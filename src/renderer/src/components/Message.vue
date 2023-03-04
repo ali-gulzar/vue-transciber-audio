@@ -14,7 +14,7 @@
           <!-- row -->
           <tr>
             <th>Persons</th>
-            <td>Muhammad Ali Gulzar & Taiba Tariq Khan</td>
+            <td>Muhammad Ali Gulzar & Random</td>
           </tr>
           <tr>
             <th>Action</th>

@@ -17,7 +17,7 @@ const store = useRecordingStatus()
     <Message />
   </div>
 
-  <div class="flex flex-col flex-grow justify-center items-center">
+  <div v-else class="flex flex-col flex-grow justify-center items-center">
     <h1
       class="text-white text-9xl font-serif"
       :class="{ animate__animated: store.recording, animate__fadeOutDown: store.recording }"
