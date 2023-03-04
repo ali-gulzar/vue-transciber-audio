@@ -25,6 +25,7 @@
     "animate.css": "^4.1.1",
     "daisyui": "^2.51.3",
     "electron-updater": "^5.3.0",
+    "vue-audio-recorder": "^3.0.1",
     "vue-timer-hook": "^1.0.64"
   },
   "devDependencies": {
