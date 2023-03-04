@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import { useRecordingStatus } from '../store/recordingStatus'
+
+const store = useRecordingStatus()
+</script>
+
 <template>
   <!-- container -->
   <div class="flex justify-between p-4">
@@ -12,7 +18,7 @@
         ></div>
         <div class="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></div>
       </div>
-      <div class="pl-5">Websocket Status</div>
+      <div class="pl-5">{{ store.recordingStatus }}</div>
     </div>
 
     <!--buttons container-->

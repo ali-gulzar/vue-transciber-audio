@@ -1,14 +1,12 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
-import Message from './Message.vue'
+import { useRecordingStatus } from '../store/recordingStatus'
 
-const state = reactive({
-  recording: false
-})
+import Message from './Message.vue'
+const store = useRecordingStatus()
 </script>
 
 <template>
-  <div v-if="state.recording" class="bg-black pb-28">
+  <div v-if="store.recordingStatus" class="bg-black pb-28">
     <Message />
     <Message />
     <Message />

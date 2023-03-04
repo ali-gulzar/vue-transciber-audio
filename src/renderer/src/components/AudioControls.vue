@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { useStopwatch } from 'vue-timer-hook'
+import { useRecordingStatus } from '../store/recordingStatus'
+
+const store = useRecordingStatus()
 
 const stopwatch = useStopwatch(0, false)
 
@@ -7,8 +10,10 @@ const changeStopwatchAction = (): void => {
   if (stopwatch.isRunning.value) {
     stopwatch.reset()
     stopwatch.pause()
+    store.updateStatus(false)
   } else {
     stopwatch.start()
+    store.updateStatus(true)
   }
 }
 </script>
