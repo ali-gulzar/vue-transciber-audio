@@ -1,17 +1,19 @@
 <script setup lang="ts">
-import 'animate.css'
 import Header from './components/Header.vue'
+import Container from './components/Container.vue'
+import AudioControls from './components/AudioControls.vue'
 </script>
 
 <template>
   <!-- container -->
-  <div class="h-screen bg-black">
+  <div class="flex flex-col h-screen bg-black">
     <!-- header -->
-    <Header></Header>
+    <Header />
 
     <!-- data container -->
-    <!-- <h1 class="text-white text-9xl font-serif animate-pulse">Audio Transcriber</h1> -->
+    <Container />
 
     <!-- audio controls container -->
+    <AudioControls />
   </div>
 </template>
