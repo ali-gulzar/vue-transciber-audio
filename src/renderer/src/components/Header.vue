@@ -10,7 +10,7 @@ const { status } = storeToRefs(store)
   <!-- container -->
   <div class="flex justify-between p-4">
     <!-- title -->
-    <div class="text-white text-4xl font-poppins">Audio Transcriber</div>
+    <div class="text-white text-4xl font-semibold font-serif">Audio Transcriber</div>
 
     <!-- websocket connection status -->
     <div class="flex items-center">
