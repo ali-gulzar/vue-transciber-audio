@@ -14,7 +14,7 @@ const changeStopwatchAction = (): void => {
 </script>
 
 <template>
-  <div class="flex flex-col justify-center items-center h-32">
+  <div class="flex flex-col justify-center items-center h-32 fixed bottom-0 inset-x-0">
     <button
       class="w-16 h-16 rounded-full bg-red-900 mb-4 focus:outline-none flex justify-center items-center"
       @click="changeStopwatchAction"
