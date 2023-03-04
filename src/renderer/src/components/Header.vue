@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { useRecordingStatus } from '../store/recordingStatus'
+import { useWebsocketStatus } from '../store/websocketStatus'
+import { storeToRefs } from 'pinia'
 
-const store = useRecordingStatus()
+const store = useWebsocketStatus()
+const { status } = storeToRefs(store)
 </script>
 
 <template>
@@ -18,7 +20,7 @@ const store = useRecordingStatus()
         ></div>
         <div class="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></div>
       </div>
-      <div class="pl-5">{{ store.recordingStatus }}</div>
+      <div class="pl-5">{{ status }}</div>
     </div>
 
     <!--buttons container-->

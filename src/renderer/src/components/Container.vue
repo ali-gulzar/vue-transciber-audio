@@ -6,7 +6,7 @@ const store = useRecordingStatus()
 </script>
 
 <template>
-  <div v-if="store.recordingStatus" class="bg-black pb-28">
+  <div v-if="store.recording" class="bg-black pb-28">
     <Message />
     <Message />
     <Message />
@@ -17,8 +17,13 @@ const store = useRecordingStatus()
     <Message />
   </div>
 
-  <div v-else class="flex flex-col flex-grow justify-center items-center">
-    <h1 class="text-white text-9xl font-serif animate-pulse">Welcome!</h1>
+  <div class="flex flex-col flex-grow justify-center items-center">
+    <h1
+      class="text-white text-9xl font-serif"
+      :class="{ animate__animated: store.recording, animate__fadeOutDown: store.recording }"
+    >
+      Welcome!
+    </h1>
     <p class="font-serif">Press play button to start recording.</p>
   </div>
 </template>

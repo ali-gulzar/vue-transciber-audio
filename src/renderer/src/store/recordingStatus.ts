@@ -2,11 +2,11 @@ import { defineStore } from 'pinia'
 
 export const useRecordingStatus = defineStore('recordingStatus', {
   state: () => ({
-    recordingStatus: true
+    recording: false
   }),
   actions: {
     updateStatus(newStatus: boolean) {
-      this.recordingStatus = newStatus
+      this.recording = newStatus
     }
   }
 })
