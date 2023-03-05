@@ -14,10 +14,14 @@ const messagesStore = useMessages()
 
 // download transcribed messages as pdf
 const downloadPdfDocument = (): void => {
-  const input = document.getElementById('pdf-download')
-  const html = htmlToPdfMake(input?.innerHTML)
-  pdfMake.vfs = pdfFonts.pdfMake.vfs
-  pdfMake.createPdf({ content: html }).download('audio-transcriber.pdf')
+  if (messagesStore.messages.length === 0) {
+    toastStore.updateMessage('No transcribed message to download!')
+  } else {
+    const input = document.getElementById('pdf-download')
+    const html = htmlToPdfMake(input?.innerHTML)
+    pdfMake.vfs = pdfFonts.pdfMake.vfs
+    pdfMake.createPdf({ content: html }).download('audio-transcriber.pdf')
+  }
 }
 
 // Socket client

@@ -46,3 +46,4 @@ $ npm run build:linux
 - [ ] Color prop to toast message
 - [ ] Placeholder on message container while getting transcribed text from the server
 - [ ] Move socket init to App.vue
+- [ ] Handle transmitting data when socket connection drops
