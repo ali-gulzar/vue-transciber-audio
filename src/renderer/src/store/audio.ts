@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 
 export const useRecordingStatus = defineStore('recordingStatus', {
   state: () => ({
-    recording: false
+    recording: false as boolean
   }),
   actions: {
     updateStatus(newStatus: boolean) {

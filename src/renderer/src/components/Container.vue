@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useRecordingStatus } from '../store/recordingStatus'
+import { useRecordingStatus } from '../store/audio'
 
 import Message from './Message.vue'
 const store = useRecordingStatus()

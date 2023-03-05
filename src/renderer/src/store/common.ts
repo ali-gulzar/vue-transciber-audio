@@ -1,18 +1,18 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
 
-export const useToastMessage = defineStore('useToastMessage', () => {
-  const showMessage = ref(false)
-  const message = ref('')
-
-  const updateMessage = (toastMessage: string): void => {
-    message.value = toastMessage
-    showMessage.value = true
-    setTimeout(() => {
-      showMessage.value = false
-      message.value = ''
-    }, 3000)
+export const useToastMessage = defineStore('useToastMessage', {
+  state: () => ({
+    showMessage: false as boolean,
+    message: '' as string
+  }),
+  actions: {
+    updateMessage(toastMessage: string) {
+      this.message = toastMessage
+      this.showMessage = true
+      setTimeout(() => {
+        this.showMessage = false
+        this.message = ''
+      }, 3000)
+    }
   }
-
-  return { showMessage, message, updateMessage }
 })

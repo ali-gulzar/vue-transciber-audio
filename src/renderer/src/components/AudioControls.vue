@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useStopwatch } from 'vue-timer-hook'
-import { useRecordingStatus } from '@renderer/store/recordingStatus'
-import { useWebSocket } from '@renderer/store/websocketStatus'
+import { useRecordingStatus } from '@renderer/store/audio'
+import { useWebSocket } from '@renderer/store/webSocket'
 import { useToastMessage } from '@renderer/store/common'
 
 const stopwatch = useStopwatch(0, false)

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useWebSocket } from '@renderer/store/websocketStatus'
+import { useWebSocket } from '@renderer/store/webSocket'
 import { useToastMessage } from '@renderer/store/common'
 import { onMounted } from 'vue'
 import { readyState } from '../services/socket'

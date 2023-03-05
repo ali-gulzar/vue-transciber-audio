@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 
 export const useWebSocket = defineStore('webSocket', {
   state: () => ({
-    status: '',
+    status: '' as string,
     client: null as WebSocket | null
   }),
   actions: {
