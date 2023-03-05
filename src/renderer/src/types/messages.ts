@@ -11,5 +11,6 @@ export interface Message {
   speaker: string
   transcribed_text: string
   likelihoods: number[]
+  time: string
   information: MetaDeta
 }

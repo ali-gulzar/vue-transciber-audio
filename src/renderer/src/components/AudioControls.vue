@@ -1,21 +1,47 @@
 <script setup lang="ts">
+import { ref, Ref } from 'vue'
 import { useStopwatch } from 'vue-timer-hook'
 import { useAudio } from '@renderer/store/audio'
 import { useWebSocket } from '@renderer/store/webSocket'
 import { useToastMessage } from '@renderer/store/common'
+import { RecordRTCPromisesHandler } from 'recordrtc'
 
+const recorderRef: Ref<null | RecordRTCPromisesHandler> = ref(null)
 const stopwatch = useStopwatch(0, false)
 const recordingStore = useAudio()
 const webSocketStore = useWebSocket()
 const toastMessageStore = useToastMessage()
 
-const play = (): void => {
+const play = async (): Promise<void> => {
   if (stopwatch.isRunning.value) {
-    stopwatch.reset()
-    stopwatch.pause()
-    recordingStore.updateStatus(false)
+    // stop recordrtc
+    recorderRef.value?.stopRecording().then(() => {
+      stopwatch.reset()
+      stopwatch.pause()
+      recordingStore.updateStatus(false)
+    })
+
+    // stop timer and update recording status
   } else {
     if (webSocketStore.client) {
+      // start recordrtc
+      const mediaStream = await navigator.mediaDevices.getUserMedia({ audio: true })
+      recorderRef.value = new RecordRTCPromisesHandler(mediaStream, {
+        type: 'audio',
+        timeSlice: 5000,
+        ondataavailable: (blob: Blob): void => {
+          // send the audio blob
+          webSocketStore.client?.send(
+            JSON.stringify({
+              blob,
+              time: `${stopwatch.hours.value}:${stopwatch.minutes.value}:${stopwatch.seconds.value}`
+            })
+          )
+        }
+      })
+      recorderRef.value.startRecording()
+
+      // update recording status and start timer
       stopwatch.start()
       recordingStore.updateStatus(true)
     } else {

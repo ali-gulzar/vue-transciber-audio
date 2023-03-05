@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { useWebSocket } from '@renderer/store/webSocket'
 import { useToastMessage } from '@renderer/store/common'
+import { useMessages } from '@renderer/store/messages'
 import { onMounted } from 'vue'
 import { readyState } from '../services/socket'
 
 const socketStore = useWebSocket()
 const toastStore = useToastMessage()
+const messagesStore = useMessages()
 
 // Socket client
 const initSocketClient = (): void => {
@@ -24,6 +26,10 @@ const initSocketClient = (): void => {
   socketClient.onopen = (event): void => {
     socketStore.status = event.type
     socketStore.updateSocket(event.type, socketClient)
+  }
+
+  socketClient.onmessage = (event): void => {
+    messagesStore.addMessage(JSON.parse(event.data))
   }
 }
 
@@ -72,6 +78,7 @@ onMounted(() => {
     <div class="flex space-x-2">
       <button
         class="btn relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white text-white focus:outline-none"
+        @click="messagesStore.clearMessages"
       >
         <span
           class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
