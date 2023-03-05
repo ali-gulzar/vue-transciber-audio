@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { useWebsocketStatus } from '@renderer/store/websocketStatus'
+import { useWebSocket } from '@renderer/store/websocketStatus'
 import { useToastMessage } from '@renderer/store/common'
 import { onMounted } from 'vue'
 import { readyState } from '../services/socket'
 
-const socketStore = useWebsocketStatus()
+const socketStore = useWebSocket()
 const toastStore = useToastMessage()
 
 // Socket client
@@ -13,18 +13,17 @@ const initSocketClient = (): void => {
   socketStore.status = readyState[socketClient.readyState]
 
   socketClient.onclose = (event): void => {
-    socketStore.status = event.type
-    socketStore.updateClient(null)
+    socketStore.updateSocket(event.type, null)
   }
 
-  socketClient.onerror = (): void => {
+  socketClient.onerror = (event): void => {
     toastStore.updateMessage('Unable to connect to server. Please try again!')
-    socketStore.updateClient(null)
+    socketStore.updateSocket(event.type, null)
   }
 
   socketClient.onopen = (event): void => {
     socketStore.status = event.type
-    socketStore.updateClient(socketClient)
+    socketStore.updateSocket(event.type, socketClient)
   }
 }
 

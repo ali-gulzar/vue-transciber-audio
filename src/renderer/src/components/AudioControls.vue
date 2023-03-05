@@ -1,14 +1,26 @@
 <script setup lang="ts">
 import { useStopwatch } from 'vue-timer-hook'
+import { useRecordingStatus } from '@renderer/store/recordingStatus'
+import { useWebSocket } from '@renderer/store/websocketStatus'
+import { useToastMessage } from '@renderer/store/common'
 
 const stopwatch = useStopwatch(0, false)
+const recordingStore = useRecordingStatus()
+const webSocketStore = useWebSocket()
+const toastMessageStore = useToastMessage()
 
 const play = (): void => {
   if (stopwatch.isRunning.value) {
     stopwatch.reset()
     stopwatch.pause()
+    recordingStore.updateStatus(false)
   } else {
-    stopwatch.start()
+    if (webSocketStore.client) {
+      stopwatch.start()
+      recordingStore.updateStatus(true)
+    } else {
+      toastMessageStore.updateMessage('Please connect to server first!')
+    }
   }
 }
 </script>
