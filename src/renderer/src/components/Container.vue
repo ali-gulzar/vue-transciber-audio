@@ -8,7 +8,11 @@ const messagesStore = useMessages()
 </script>
 
 <template>
-  <div v-if="audioStore.recording || messagesStore.messages.length !== 0" class="bg-black pb-28">
+  <div
+    v-if="audioStore.recording || messagesStore.messages.length !== 0"
+    id="pdf-download"
+    class="bg-black pb-28"
+  >
     <Message />
   </div>
 
