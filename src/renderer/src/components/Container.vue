@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import { useRecordingStatus } from '../store/audio'
+import { useAudio } from '../store/audio'
 
 import Message from './Message.vue'
-const store = useRecordingStatus()
+const store = useAudio()
 </script>
 
 <template>
   <div v-if="store.recording" class="bg-black pb-28">
-    <Message />
     <Message />
   </div>
 

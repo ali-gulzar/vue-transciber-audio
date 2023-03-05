@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-export const useRecordingStatus = defineStore('recordingStatus', {
+export const useAudio = defineStore('useAudio', {
   state: () => ({
     recording: false as boolean
   }),

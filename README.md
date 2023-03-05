@@ -39,3 +39,9 @@ $ npm run build:mac
 # For Linux
 $ npm run build:linux
 ```
+
+### THINGS TO DO
+
+- [ ] Animation when transiting from welcome to messages
+- [ ] Color prop to toast message
+- [ ] Placeholder on message container while getting transcribed text from the server
