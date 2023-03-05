@@ -1,19 +1,14 @@
 <script setup lang="ts">
 import { useStopwatch } from 'vue-timer-hook'
-import { useRecordingStatus } from '../store/recordingStatus'
-
-const store = useRecordingStatus()
 
 const stopwatch = useStopwatch(0, false)
 
-const changeStopwatchAction = (): void => {
+const play = (): void => {
   if (stopwatch.isRunning.value) {
     stopwatch.reset()
     stopwatch.pause()
-    store.updateStatus(false)
   } else {
     stopwatch.start()
-    store.updateStatus(true)
   }
 }
 </script>
@@ -22,7 +17,7 @@ const changeStopwatchAction = (): void => {
   <div class="flex flex-col justify-center items-center h-32 fixed bottom-0 inset-x-0">
     <button
       class="w-16 h-16 rounded-full bg-red-900 mb-4 focus:outline-none flex justify-center items-center"
-      @click="changeStopwatchAction"
+      @click="play"
     >
       <v-icon v-if="stopwatch.isRunning.value" name="co-media-pause" scale="2" />
       <v-icon v-else name="co-media-play" scale="2" />
