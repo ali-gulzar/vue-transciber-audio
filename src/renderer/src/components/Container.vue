@@ -11,9 +11,12 @@ const messagesStore = useMessages()
   <div
     v-if="audioStore.recording || messagesStore.messages.length !== 0"
     id="pdf-download"
-    class="bg-black pb-28"
+    class="bg-black pb-28 space-y-10"
   >
     <Message />
+    <div v-if="audioStore.recording" class="flex justify-center">
+      <progress class="progress progress-success w-60"></progress>
+    </div>
   </div>
 
   <div v-else class="flex flex-col flex-grow justify-center items-center">

@@ -10,7 +10,9 @@ const messageStore = useMessages()
       <!-- transcribed text -->
       <div class="flex-1">
         <div class="chat chat-start">
-          <div class="chat-bubble" contenteditable>{{ message.transcribed_text }}</div>
+          <div class="chat-bubble focus:outline-none" contenteditable>
+            {{ message.transcribed_text }}
+          </div>
         </div>
       </div>
 

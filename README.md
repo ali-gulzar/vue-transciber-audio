@@ -44,6 +44,8 @@ $ npm run build:linux
 
 - [ ] Animation when transiting from welcome to messages
 - [ ] Color prop to toast message
-- [ ] Placeholder on message container while getting transcribed text from the server
+- [x] Placeholder on message container while getting transcribed text from the server
 - [ ] Move socket init to App.vue
 - [ ] Handle transmitting data when socket connection drops
+- [x] Keep scroll bar to the bottom always
+- [ ] Handle getting access for audio
