@@ -49,3 +49,4 @@ $ npm run build:linux
 - [ ] Handle transmitting data when socket connection drops
 - [x] Keep scroll bar to the bottom always
 - [ ] Handle getting access for audio
+- [ ] Color coding for likelihoods of words
